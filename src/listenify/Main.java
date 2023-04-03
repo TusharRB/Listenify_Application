@@ -5,41 +5,35 @@ import java.util.*;
 public class Main {
 
     public static List<Album> albums = new ArrayList<>();
+
     public static void main(String[] args) {
+        System.out.println("Hello world!");
 
-        Album album = new Album("Old Hindi Song","Arijit Singh");
+        Album album = new Album("Old Hindi Songs","Arijit Singh");
 
-        album.addSongToAlbum("Pathan",4.5);
-        album.addSongToAlbum("Channa M",3.7);
-        album.addSongToAlbum("Naina",4.6);
-
-        albums.add(album);
-
-
-        album = new Album("New Hindi Song","Arijit Singh");
-
-        album.addSongToAlbum("Rafta",5.5);
-        album.addSongToAlbum("Kassor",4.7);
-        album.addSongToAlbum("ishq",4.3);
-
+        album.addSongToAlbum("Pathaan",4.5);
+        album.addSongToAlbum("Channa mereya",3.5);
+        album.addSongToAlbum("Naina",5.0);
 
         albums.add(album);
 
+        album = new Album("New Songs","Prateek Kuhad");
 
+        album.addSongToAlbum("Kasoor",4.5);
+        album.addSongToAlbum("Tum mile",3.5);
+        album.addSongToAlbum("Baarishein",4.5);
 
-        // Create PlayList
+        albums.add(album);
 
-        LinkedList<Song> playList1 = new LinkedList<>();
+        LinkedList<Song> playList_1 = new LinkedList<>();
 
-        albums.get(0).addSongToPlayList("Pathan",playList1);
-        albums.get(1).addSongToPlayList("kassor",playList1);
+        albums.get(0).addSongToPlayList("Pathaan",playList_1);
+        albums.get(0).addSongToPlayList("Naina",playList_1);
+        albums.get(1).addSongToPlayList("Kasoor",playList_1);
+        albums.get(1).addSongToPlayList("Baarishein",playList_1);
 
-
-
-        // Print the playList that has been Added
-
-        play(playList1);
-
+        //print the playList that has been added
+        play(playList_1);
     }
     public static void play(LinkedList<Song> playList){
 
@@ -52,7 +46,7 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-       // printMenu();
+        printMenu();
 
         System.out.println("Now playing "+listIterator.next());
 
@@ -104,10 +98,10 @@ public class Main {
                     //Replay the current song
                     break;
                 case 4:
-                    //printAllSongs(playList);
+                    printAllSongs(playList);
                     break;
                 case 5:
-                    //printMenu();
+                    printMenu();
                     break;
                 case 6:
                     //Delete a song
@@ -135,4 +129,34 @@ public class Main {
         }
 
     }
+    private static void printAllSongs(LinkedList<Song> songs){
+
+        //Try for each loop
+
+        /*
+        for(Song song:songs){
+
+            System.out.println(song);
+        }*/
+
+
+        ListIterator<Song> listIterator = songs.listIterator();
+
+        while(listIterator.hasNext()){
+            System.out.println(listIterator.next().toString());
+        }
+    }
+
+    private static void printMenu(){
+        System.out.println("Available options\n press");
+        System.out.println("0 - to quit\n"+
+                "1 - to play next song\n"+
+                "2 - to play previous song\n"+
+                "3 - to replay the current song\n"+
+                "4 - list of all songs \n"+
+                "5 - print all available options\n"+
+                "6 - delete current song");
+    }
+
+
 }
